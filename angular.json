@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "my-angexp-app"
+    }
+  },
+  "defaultProject": "my-angexp-app",
+  "cli": {
+    "analytics": "eaf36978-b399-4562-874f-9d7991a282f2"
+  }
 }
