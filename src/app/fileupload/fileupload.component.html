@@ -1,0 +1,18 @@
+<h1>Upload your Image!</h1>
+<div>
+  <div *ngIf="error != ''">
+    {{ error }}
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <!-- For single file upload -->
+    <!-- <input type="file" name="image" (change)="onFileChange($event)" /> -->
+
+    <!-- For multiple file upload -->
+    <input type="file" name="images" multiple (change)="onFileChanges($event)" />
+
+    <button type="submit">Upload</button>
+
+  </form>
+</div>
