@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { ForbiddenNameValidator } from '../shared/user-name.validator';
 import { PasswordValidator } from '../shared/password.validator';
 import { RegistrationService } from '../registration.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -25,12 +26,43 @@ export class RegistrationComponent implements OnInit {
   // });
   constructor(
     private fb: FormBuilder,
-    private _registrationService: RegistrationService
+    private _registrationService: RegistrationService,
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   id: any;
-
+  edit_id: number;
+  if_edit: string;
+  if_delete: string;
+  sh_button = false;
   ngOnInit() {
+
+    this.route.params
+    .subscribe(
+      (params: Params) => {
+        this.edit_id = +params['id'];
+        this.if_edit = params['edit'];
+        this.if_delete = params['delete'];
+
+        if (this.if_edit == 'edit') {
+          console.log(this.edit_id);
+          if (this.edit_id >= 0) {
+            this.sh_button = true;
+            this.loadIndvData(this.edit_id);
+          }
+        }
+
+        if (this.if_delete == 'delete') {
+          console.log(this.edit_id);
+          if (this.edit_id >= 0) {
+            this.deleteData(this.edit_id);
+          }
+        }
+        
+      }
+    );
+
     this.registrationForm = this.fb.group(
       {
         userName: [
@@ -51,6 +83,7 @@ export class RegistrationComponent implements OnInit {
           postalCode: [''],
         }),
         alternateEmails: this.fb.array([]),
+        updateid: [''],
       },
       { validator: PasswordValidator }
     );
@@ -101,6 +134,7 @@ export class RegistrationComponent implements OnInit {
 
   loadIndvData(receivedId: number) {
     this.id = { id: receivedId };
+    console.log(this.id);
     this._registrationService.getIndivData(this.id).subscribe(
       (response) => {
         this.registrationForm.patchValue({
@@ -114,6 +148,7 @@ export class RegistrationComponent implements OnInit {
             state: response[0].state,
             postalCode: response[0].pcode,
           },
+          updateid: response[0].id,
         });
         console.log('Success!', response);
       },
@@ -125,7 +160,10 @@ export class RegistrationComponent implements OnInit {
     this._registrationService
       .updateData(this.registrationForm.value, receivedId)
       .subscribe(
-        (response) => console.log('Success!', response),
+        (response) => {
+          console.log('Success!', response);
+          this.router.navigate(['userlist']);
+        },
         (error) => console.error('Error!', error)
       );
   }
@@ -133,7 +171,10 @@ export class RegistrationComponent implements OnInit {
   deleteData(receivedId: number) {
     this.id = { id: receivedId };
     this._registrationService.deleteData(this.id).subscribe(
-      (response) => console.log('Success!', response),
+      (response) => {
+        console.log('Success!', response);
+        this.router.navigate(['userlist']);
+      },
       (error) => console.error('Error!', error)
     );
   }

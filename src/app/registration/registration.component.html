@@ -64,10 +64,15 @@
 
     </div>
 
-    <button class="btn btn-success" [disabled]="!registrationForm.valid" type="submit">Register</button>
-    <button (click)="loadAllData()" class="btn btn-dark ml-2" type="button">Load All Data</button>
+    <input type="hidden" #upid class="form-control" formControlName="updateid">
 
-    <hr>
+    <button *ngIf= "!sh_button" class="btn btn-success" [disabled]="!registrationForm.valid" type="submit">Register</button>
+
+    <button *ngIf= "sh_button" class="btn btn-success" [disabled]="!registrationForm.valid" type="button" (click)="updateData(upid.value)">Update</button>
+
+    <!-- <button (click)="loadAllData()" class="btn btn-dark ml-2" type="button">Load All Data</button> -->
+
+    <!-- <hr>
     <hr>
 
     <div class="form-group">
@@ -85,7 +90,7 @@
 
     <button (click)="loadIndvData(loadid.value)" class="btn btn-primary" type="button">Load Individual Data</button>
     <button (click)="updateData(upid.value)" class="btn btn-secondary ml-2" type="button">Update user</button>
-    <button (click)="deleteData(dltdid.value)" class="btn btn-danger ml-2" type="button">Delete User</button>
+    <button (click)="deleteData(dltdid.value)" class="btn btn-danger ml-2" type="button">Delete User</button> -->
 
   </form>
   <br>
@@ -93,12 +98,4 @@
   {{registrationForm.value | json}}
 </div>
 
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <a routerLink="file" style="cursor: pointer;">File upload</a>
-    </div>
-  </div>
-</div>
 <router-outlet></router-outlet>

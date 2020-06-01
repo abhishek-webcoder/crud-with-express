@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UserlistComponent } from './userlist/userlist.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FileuploadComponent,
     RegistrationComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    UserlistComponent
   ],
   imports: [
     BrowserModule,

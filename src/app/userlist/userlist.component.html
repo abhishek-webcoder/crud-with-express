@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button (click)="loadAllData()" class="btn btn-dark ml-2" type="button">Load All Data</button>
+    </div>
+  </div>
+  <br><hr>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div *ngIf = "check">
+        <table style="width:100%">
+          <tr>
+            <th>Sl.No</th>
+            <th>Username</th>
+            <th>password</th>
+            <th>Email</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Postal Code</th>
+            <th>Edit</th>
+            <th>Delete</th>
+
+          </tr>
+          <tr *ngFor = "let each_user of userData;let i=index;">
+            <td>{{ i+1 }}</td>
+            <td>{{ each_user.username }}</td>
+            <td>{{ each_user.password }}</td>
+            <td>{{ each_user.email }}</td>
+            <td>{{ each_user.city }}</td>
+            <td>{{ each_user.state }}</td>
+            <td>{{ each_user.pcode }}</td>
+
+            <input type="hidden" value="{{ each_user.id }}" #id>
+
+            <td><button type="button" class="btn btn-primary btn-sm" (click)="editData(id.value)">Edit</button></td>
+            <td><button type="button" class="btn btn-danger btn-sm" (click)="deleteData(id.value)">Delete</button></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
