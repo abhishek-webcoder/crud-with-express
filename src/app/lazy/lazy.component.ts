@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-lazy',
@@ -7,15 +8,23 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class LazyComponent implements OnInit {
 
+  msg: string;
+
   @Input() message: string;
-  @Output() sendEventMessage = new EventEmitter();
+  //@Output() sendEventMessage = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  load() {
-    this.sendEventMessage.emit('Hello I am Abhishek Roy');
-  }
-
+  // loadmsg() : void{
+  //   this.sendEventMessage.emit('Hello I am Abhishek Roy');
+  // }
 }
+
+
+@NgModule({
+  declarations: [LazyComponent],
+  imports: [FormsModule],
+})
+class LazyComponentModule { }
