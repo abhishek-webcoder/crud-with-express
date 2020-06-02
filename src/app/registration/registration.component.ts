@@ -122,7 +122,7 @@ export class RegistrationComponent implements OnInit {
     this._registrationService.register(this.registrationForm.value).subscribe(
       (response) => {
         console.log('Success!', response);
-        this.router.navigate(['userlist']);
+        this.router.navigate(['/']);
       },
       (error) => console.error('Error!', error)
     );

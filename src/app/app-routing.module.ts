@@ -9,16 +9,13 @@ import { AuthGuardService } from './auth-guard.service';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'registration', canActivate: [AuthGuardService], component: RegistrationComponent },
+  { path: 'registration', component: RegistrationComponent },
   { path: 'edit/:id/:edit', canActivate: [AuthGuardService], component: RegistrationComponent },
   { path: 'delete/:id/:delete', canActivate: [AuthGuardService], component: RegistrationComponent },
   { path: 'file', canActivate: [AuthGuardService], component: FileuploadComponent },
-  // { path: 'userlist', component: UserlistComponent },
-
-  // { path: 'userlist', loadChildren: './userlist/userlist.module#UserlistModule' },
-
   {
     path: 'userlist',
+    canActivate: [AuthGuardService],
     loadChildren: () => import('./userlist/userlist.module').then(m => m.UserlistModule)
   },
 

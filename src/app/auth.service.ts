@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() { }
+  constructor(private _http: HttpClient) { }
 
   loggedIn = false;
 
@@ -17,14 +19,16 @@ export class AuthService {
     return promise;
   }
 
-  login() {
+  login(data) {
     this.loggedIn = true;
+    return this._http.post<any>(environment.apiUrl + 'login', data);
   }
 
   logout() {
     this.loggedIn = false;
   }
 
+  // To pass JWT tocken in header
   getToken() {
     return localStorage.getItem('access_token');
   }
