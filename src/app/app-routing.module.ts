@@ -6,6 +6,7 @@ import { FileuploadComponent } from './fileupload/fileupload.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AuthGuardService } from './auth-guard.service';
+import { NewsComponent } from './news/news.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -18,6 +19,11 @@ const appRoutes: Routes = [
     canActivate: [AuthGuardService],
     loadChildren: () => import('./userlist/userlist.module').then(m => m.UserlistModule)
   },
+  // {
+  //   path: 'news',
+  //   loadChildren: () => import('./news/news.module').then(m => m.NewsModule)
+  // },
+  { path: 'news', component: NewsComponent },
 
   { path: 'not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: '/not-found' }

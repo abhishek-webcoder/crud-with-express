@@ -1,0 +1,38 @@
+<div class="container">
+<button class="btn btn-primary" (click)="loadNewsData()">Read Headlines</button>
+<br><hr>
+<div class="row">
+  <div class="col-md-12">
+    <h3>Read news by category</h3><br>
+    <button class="btn btn-dark btn-sm" (click)="loadCustomNewsData(business)">Business</button>&nbsp;&nbsp;
+    <button class="btn btn-dark btn-sm" (click)="loadCustomNewsData(entertainment)">Entertainment</button>&nbsp;&nbsp;
+    <button class="btn btn-dark btn-sm" (click)="loadCustomNewsData(health)">Health</button>&nbsp;&nbsp;
+    <button class="btn btn-dark btn-sm" (click)="loadCustomNewsData(science)">Science</button>&nbsp;&nbsp;
+    <button class="btn btn-dark btn-sm" (click)="loadCustomNewsData(sports)">Sports</button>&nbsp;&nbsp;
+    <button class="btn btn-dark btn-sm" (click)="loadCustomNewsData(technology)">Technology</button>
+  </div>
+</div>
+<br><hr>
+
+<div>
+  <div class="row newsdiv" *ngFor="let news of newsData">
+    <ul>
+      <li>
+        <h5 *ngIf="news.author != null">Author : {{ news.author }}</h5>
+        <h5 *ngIf="news.author == null">Author : Anonymous</h5>
+      </li>
+      <li><p><span>Content : </span>{{ news.content }}</p></li>
+      <li><p><span>Description : </span>{{ news.description }}</p></li>
+      <li><p><span>Published on : </span>{{ news.publishedAt | date:'medium' }}</p></li>
+      <li><p><span>Source : </span>{{ news.source.name }}</p></li>
+      <li><p><span>To read more : </span><a [href]="news.url" target="_blank">{{ news.title }}</a></p></li>
+      <li>
+        <div class="box">
+          <img [src]="news.urlToImage" alt="Image">
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+</div>
