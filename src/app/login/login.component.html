@@ -21,9 +21,9 @@
 
       <button type="submit" class="btn btn-success">Log In</button>&nbsp;&nbsp;
       <button type="button" class="btn btn-primary" (click)="register()">Register</button>&nbsp;&nbsp;
-      <button type="button" class="btn btn-danger" (click)="onLogout()">Logout</button>
+      <button type="button" class="btn btn-danger" (click)="onLogout()">Logout</button><br><br>
 
-      <div class="text-danger" *ngIf = "errmsg!= ''">{{ errmsg }}</div>
+      <div class="alert alert-danger" *ngIf = "errmsg!= ''">{{ errmsg }}</div>
       
     </form>
   </div>

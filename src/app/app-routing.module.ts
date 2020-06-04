@@ -19,10 +19,6 @@ const appRoutes: Routes = [
     canActivate: [AuthGuardService],
     loadChildren: () => import('./userlist/userlist.module').then(m => m.UserlistModule)
   },
-  // {
-  //   path: 'news',
-  //   loadChildren: () => import('./news/news.module').then(m => m.NewsModule)
-  // },
   { path: 'news', component: NewsComponent },
 
   { path: 'not-found', component: PageNotFoundComponent },
