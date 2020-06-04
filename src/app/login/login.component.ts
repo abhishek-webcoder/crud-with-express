@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  msg = 'Please login to fill up the form..!';
+  msg = 'Please login to to access File upload and Userlist..!!';
   errmsg: string = '';
   constructor(
     private router: Router, 

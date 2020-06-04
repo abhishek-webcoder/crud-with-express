@@ -32,6 +32,7 @@ export class RegistrationComponent implements OnInit {
   ) { }
 
   id: any;
+  rcv_id: any;
   edit_id: number;
   if_edit: string;
   if_delete: string;
@@ -41,11 +42,12 @@ export class RegistrationComponent implements OnInit {
     this.route.params
     .subscribe(
       (params: Params) => {
-        this.edit_id = +params['id'];
+        this.rcv_id = atob(atob(atob(params['id'])));
+        this.edit_id = Number(this.rcv_id);
         this.if_edit = params['edit'];
         this.if_delete = params['delete'];
 
-        if (this.if_edit == 'edit') {
+        if (this.if_edit == 'e') {
           console.log(this.edit_id);
           if (this.edit_id >= 0) {
             this.sh_button = true;
@@ -53,7 +55,7 @@ export class RegistrationComponent implements OnInit {
           }
         }
 
-        if (this.if_delete == 'delete') {
+        if (this.if_delete == 'd') {
           console.log(this.edit_id);
           if (this.edit_id >= 0) {
             this.deleteData(this.edit_id);

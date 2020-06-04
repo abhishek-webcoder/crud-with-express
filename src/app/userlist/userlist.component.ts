@@ -27,14 +27,14 @@ export class UserlistComponent implements OnInit {
     );
   }
 
-  edit = 'edit';
+  edit = 'e';
   editData(id: number) {
     // this.router.navigate(['registration']);
     console.log(id);
-    this.router.navigate(['edit', +id, this.edit]);
+    this.router.navigate(['edit', btoa(btoa(btoa(id.toString(2)))), this.edit]);
   }
 
-  delete = 'delete';
+  delete = 'd';
   deleteData(id: number) {
     // this.router.navigate(['registration']);
     console.log(id);
