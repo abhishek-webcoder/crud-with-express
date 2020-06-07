@@ -15,8 +15,9 @@ export class NewsComponent implements OnInit {
   sports = 'sports';
   technology = 'technology';
   
+  ifdata = false;
+  category: string;
   newsData: any;
-  check = false;
   constructor(private newsService: NewsService) { }
 
   ngOnInit(): void {
@@ -26,7 +27,6 @@ export class NewsComponent implements OnInit {
   loadNewsData() {
     this.newsService.getData().subscribe(
       (response) => {
-        this.check = true;
         this.newsData = response.articles;
         // console.log('Success!', response);
         console.log('Success!', response.articles);
@@ -38,7 +38,8 @@ export class NewsComponent implements OnInit {
   loadCustomNewsData(type: string) {
     this.newsService.getCustomData(type).subscribe(
       (response) => {
-        this.check = true;
+        this.ifdata=  true;
+        this.category= type;
         this.newsData = response.articles;
         // console.log('Success!', response);
         console.log('Success!', response.articles);

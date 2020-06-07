@@ -13,6 +13,8 @@ import { AuthService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
 import { RegistrationService } from './registration.service';
 import { NewsService } from './news/news.service';
+import { CovidtrackComponent } from './covidtrack/covidtrack.component';
+import { CovidtrackService } from './covidtrack/covidtrack.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { NewsService } from './news/news.service';
     RegistrationComponent,
     LoginComponent,
     PageNotFoundComponent,
-    NewsComponent
+    NewsComponent,
+    CovidtrackComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { NewsService } from './news/news.service';
     AuthService,
     AuthGuardService,
     RegistrationService,
-    NewsService
+    NewsService,
+    CovidtrackService
   ],
   bootstrap: [AppComponent]
 })

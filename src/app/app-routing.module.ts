@@ -7,6 +7,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RegistrationComponent } from './registration/registration.component';
 import { AuthGuardService } from './auth-guard.service';
 import { NewsComponent } from './news/news.component';
+import { CovidtrackComponent } from './covidtrack/covidtrack.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
     loadChildren: () => import('./userlist/userlist.module').then(m => m.UserlistModule)
   },
   { path: 'news', component: NewsComponent },
+  { path: 'covid19', component: CovidtrackComponent },
 
   { path: 'not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: '/not-found' }

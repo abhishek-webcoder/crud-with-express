@@ -1,0 +1,37 @@
+<div class="conatainer">
+  <!-- <ul style="list-style: none;">
+    <li *ngFor= "let country of countries">{{country.country}}</li>
+  </ul> -->
+  <div class="form-group">
+    <label>Select Country</label>
+    <select class="form-control" #countryvalue>
+      <option *ngFor="let country of countries" [value]="country.slug">{{country.country}}</option>
+    </select>
+  </div>
+  <button type="button" class="btn btn-dark" (click)="getCountryData(countryvalue.value)"> Get data</button><br><br>
+
+  <div *ngIf="indCountriesData">
+    <h4>The data is for country : {{ dataFor | titlecase }}</h4>
+    <div class="row covidiv">
+      <ul style="list-style: none;">
+        <li>
+          <p><span>Confirmed Cases : </span> {{indCountriesData.Confirmed}}</p>
+        </li>
+        <li>
+          <p><span>Recovered : </span> {{indCountriesData.Recovered}}</p>
+        </li>
+        <li>
+          <p><span>Deaths : </span> {{indCountriesData.Deaths}}</p>
+        </li>
+        <li>
+          <p><span>Last Updated Date : </span> {{indCountriesData.Date | date:'medium'}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="alert alert-info" *ngIf="noData">
+    <strong>Info!</strong> No data found for the country..
+  </div>
+
+</div>

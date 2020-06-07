@@ -15,6 +15,9 @@
 <br><hr>
 
 <div>
+  <div *ngIf="ifdata">
+    <h4>News is for the category {{ category }}</h4>
+  </div><br>
   <div class="row newsdiv" *ngFor="let news of newsData">
     <ul>
       <li>
